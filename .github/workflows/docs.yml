@@ -1,0 +1,25 @@
+name: Docs check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Required files are present
+        run: |
+          for f in README.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE; do
+            test -s "$f" || { echo "missing $f"; exit 1; }
+          done
+      - name: README links to every level
+        run: |
+          for repo in ai-agents-beginner ai-agents-intermediate ai-agents-advanced; do
+            grep -q "github.com/dukemawex/$repo" README.md || { echo "README does not link $repo"; exit 1; }
+          done
+      - name: House style (no em-dashes)
+        run: |
+          if grep -rn $'\u2014' --include='*.md' .; then echo "Please replace em-dashes"; exit 1; fi

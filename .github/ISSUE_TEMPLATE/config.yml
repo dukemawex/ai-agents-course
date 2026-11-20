@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Beginner lessons
+    url: https://github.com/dukemawex/ai-agents-beginner/issues
+    about: Bugs or questions about beginner modules
+  - name: Intermediate lessons
+    url: https://github.com/dukemawex/ai-agents-intermediate/issues
+    about: Bugs or questions about intermediate modules
+  - name: Advanced lessons
+    url: https://github.com/dukemawex/ai-agents-advanced/issues
+    about: Bugs or questions about advanced modules
